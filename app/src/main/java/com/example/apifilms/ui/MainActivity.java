@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     FilmAdapter filmAdapter;
-    
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
