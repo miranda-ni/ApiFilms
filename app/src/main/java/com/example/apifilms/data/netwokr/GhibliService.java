@@ -14,14 +14,15 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
+import retrofit2.http.Url;
 
 public class GhibliService {
-
 
     Retrofit retrofit = new Retrofit.Builder()
             .baseUrl("https://ghibliapi.herokuapp.com/")
             .addConverterFactory(GsonConverterFactory.create())
             .build();
+
 
     GhibliApi service = retrofit.create(GhibliApi.class);
 
@@ -51,7 +52,7 @@ public class GhibliService {
                 ghibliListCallBack.onSuccess(response.body());
             }
 
-            @Override //esli oshibka to onFailure
+           @Override //esli oshibka to onFailure
             public void onFailure(Call<ArrayList<FilmModel>> call, Throwable t) {
                 ghibliListCallBack.onFailure(t);
 
@@ -64,12 +65,14 @@ public class GhibliService {
     public interface GhibliListCallBack{
         void onSuccess(ArrayList<FilmModel> filmModels);
 
+
         void onFailure(Throwable e);
 
     }
 
     public interface GhibliFilmCallback {
         void onSuccess(FilmModel filmModel);
+
 
         void onFailure(Throwable ex);
     }
@@ -78,11 +81,13 @@ public class GhibliService {
         @GET("films/{filmId}")
         Call<FilmModel> getFilmById
                 (@Path("filmId") String filmId);
-
-
         @GET("films")
         Call<ArrayList<FilmModel>> getFilms();
 
+        @GET
+        Call<FilmModel>getFilm(@Url String url);
 
     }
+
+
 }

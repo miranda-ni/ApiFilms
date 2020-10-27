@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ApiFilms</string>
+    <string name="save_films">Save Films</string>
 </resources>

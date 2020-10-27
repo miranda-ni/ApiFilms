@@ -5,7 +5,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -15,21 +17,30 @@ import com.example.apifilms.adepter.FilmAdapter;
 import com.example.apifilms.data.models.FilmModel;
 import com.example.apifilms.data.netwokr.GhibliService;
 import com.example.apifilms.ui.activitynew.ActivityNew;
+import com.example.apifilms.ui.saveactivity.SaveActivity;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    RecyclerView recyclerView;
-    FilmAdapter filmAdapter;
+  private   RecyclerView recyclerView;
+   private FilmAdapter filmAdapter;
+   private ArrayList<FilmModel> filmModelArrayList;
+   private Button saveFilms;
 
-
-    @Override
+   @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         recyclerView = findViewById(R.id.recycler);
         filmAdapter = new FilmAdapter();
         recyclerView.setAdapter(filmAdapter);
+        saveFilms = findViewById(R.id.saveFilms);
+        saveFilms.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, SaveActivity.class));
+            }
+        });
 
 
 
@@ -50,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Throwable e) {
+                Log.d("TAG", "onFailure: " + e.getMessage());
 
             }
         });

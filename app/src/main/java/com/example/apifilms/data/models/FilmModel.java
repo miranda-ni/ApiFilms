@@ -1,14 +1,21 @@
 package com.example.apifilms.data.models;
 
+import androidx.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
-
+@Entity
 public class FilmModel {
+    @PrimaryKey
 
     @SerializedName("id")
     @Expose
+    @NonNull
     private String id;
     @SerializedName("title")
     @Expose
@@ -30,21 +37,27 @@ public class FilmModel {
     private String rtScore;
     @SerializedName("people")
     @Expose
+    @Ignore
     private List<String> people = null;
     @SerializedName("species")
     @Expose
+    @Ignore
     private List<String> species = null;
     @SerializedName("locations")
     @Expose
+    @Ignore
     private List<String> locations = null;
     @SerializedName("vehicles")
     @Expose
+    @Ignore
     private List<String> vehicles = null;
     @SerializedName("url")
     @Expose
+    @Ignore
     private String url;
     @SerializedName("length")
     @Expose
+    @Ignore
     private Object length;
 
     public String getId() {

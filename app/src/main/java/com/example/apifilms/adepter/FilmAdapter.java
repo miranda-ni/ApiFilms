@@ -15,12 +15,9 @@ import java.util.ArrayList;
 
 public class FilmAdapter  extends RecyclerView.Adapter<FilmAdapter.ViewHolder> {
 
-
     OnClick onClick;
 
     public ArrayList<FilmModel> filmModelArrayList = new ArrayList<>();
-
-
 
     public void setOnClick(OnClick onClick) {
         this.onClick = onClick;
